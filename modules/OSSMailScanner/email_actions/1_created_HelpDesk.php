@@ -44,7 +44,7 @@ function _1_created_HelpDesk($user_id, $mailDetail, $folder, $return)
 				$HelpDeskInstance->column_fields['ticketpriorities'] = $adb->query_result($servicecontracts, 0, 'priority');
 			}
 		}
-		$HelpDeskInstance->column_fields['description'] = strip_tags($mailDetail['body']);
+		$HelpDeskInstance->column_fields['description'] = strip_tags($mailDetail['body'], '<p><a><br><ul><li>');
 		$HelpDeskInstance->column_fields['ticketstatus'] = 'Open';
 		$HelpDeskInstance->save('HelpDesk');
 		$id = $HelpDeskInstance->id;
